@@ -37,8 +37,47 @@ void append(DynArr *arr, int element)
     arr->size++;
 }
 
+void pop(DynArr *arr)
+{
+    if (arr->size > 0)
+    {
+        arr->size--;
+    }
+}
+// Array at index
+int get(DynArr *arr, int index)
+{
+    if (index >= 0 && index < arr->size)
+        return arr->data[index];
+    else
+        return -1; // or handle error
+}
+
+void set(DynArr *arr, int index, int element)
+{
+    if (index >= 0 && index < arr->size)
+    {
+        arr->data[index] = element;
+    }
+    else
+    {
+        printf("Error trying to insert an element");
+    }
+}
+
 int main()
 {
     DynArr arr;
     init(&arr, 2);
+    append(&arr, 1);
+    append(&arr, 2);
+    append(&arr, 3);
+    append(&arr, 4);
+
+    for (int i = 0; i < arr.size; i++)
+    {
+        printf("%d", get(&arr, i));
+    }
+    free(arr.data);
+    getch();
 }
